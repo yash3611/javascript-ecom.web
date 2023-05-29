@@ -1,0 +1,293 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary bg-info">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">S-Shop</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse me-auto" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            </ul>
+            <button class="btn btn-dark" type="button" onclick="cart()">Cart</button>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row pt-5 pb-5">
+        <div class="col-md-1">
+            <button onclick="viewdata()" class="btn btn-primary">All</button>
+        </div>
+        <div class="col-md-1">
+            <button onclick="Nikedata()" class="btn btn-primary">Nike</button>
+        </div>
+        <div class="col-md-1">
+            <button onclick="LVData()" class="btn btn-primary">L.V</button>
+        </div>
+    </div>
+</div>
+
+<div style="margin-top: 25px;" class="container">
+    <div class="row" id="record">
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    let data = [
+        {
+            productid: Math.floor(Math.random() * 1000),
+            productname: "Nikr Air-Force-1",
+            qty: 1,
+            Brand: "Nike",
+            price: 9695.00,
+            image: "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/f153b4e4-9069-44ae-bf86-f70ae8ecbaa1/air-force-1-07-flyease-shoes-lpjTWM.png"
+        },
+        {
+            productid: Math.floor(Math.random() * 1000),
+            productname: "Air Jordan 1 Mid SE",
+            qty: 1,
+            Brand: "Nike",
+            price: 9365.00,
+            image: "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/38e38dca-6cc5-43af-8ff6-e81becc96619/air-jordan-1-mid-se-shoes-p48zQ5.png"
+        },
+        {
+            productid: Math.floor(Math.random() * 1000),
+            productname: "Air Jordan 1 Low FlyEase",
+            qty: 1,
+            Brand: "Nike",
+            price: 95000.00,
+            image: "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/4f5470b0-cc49-4ba0-8b44-d7aaaa4bc928/air-jordan-1-low-flyease-easy-on-off-shoes-SsT4HK.png"
+        },
+        {
+            productid: Math.floor(Math.random() * 1000),
+            productname: "Air Jordan 1 Retro High OG",
+            qty: 1,
+            Brand: "Nike",
+            price: 19000.00,
+            image: "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/03ac93ba-0ab0-4e37-a623-9972de262234/air-jordan-1-retro-high-og-shoes-Pz6fZ9.png"
+        },
+        {
+            productid: Math.floor(Math.random() * 1000),
+            productname: "Air Jordan 1 Retro High OG",
+            qty: 1,
+            Brand: "Nike",
+            price: 13000.00,
+            image: "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/c3dead19-8a8f-42b7-8de7-d56cc9d8550f/air-jordan-1-zoom-cmft-2-shoes-nX8Qqx.png"
+        },
+        {
+            productid: Math.floor(Math.random() * 1000),
+            productname: "Air Jordan 1 Retro High OG",
+            qty: 1,
+            Brand: "Nike",
+            price: 15000,
+            image: "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/5927b4c8-6f28-4334-a174-20edb76c3c29/air-jordan-1-retro-high-og-mens-shoes-JHpxkn.png"
+        },
+        {
+            productid: Math.floor(Math.random() * 1000),
+            productname: "Air Jordan 6 Retro",
+            qty: 1,
+            Brand: "Nike",
+            price: 14000,
+            image: "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/a7eed2dc-85e3-4ede-a497-bf788324f487/air-jordan-6-retro-shoes-QLGPHR.png"
+        },
+        {
+            productid: Math.floor(Math.random() * 1000),
+            productname: "Air Jordan 1 High G",
+            qty: 1,
+            Brand: "Nike",
+            price: 14000,
+            image: "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/3f796e1e-1f14-444c-bef1-ffd2da6b62b4/air-jordan-i-high-g-mens-golf-shoes-ZgQdl6.png"
+        },
+        {
+            productid: Math.floor(Math.random() * 1000),
+            productname: "Air Jordan 1 Low G",
+            qty: 1,
+            Brand: "Nike",
+            price: 10000,
+            image: "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/23d84f57-4c87-4a50-9120-df01e2e29d6d/air-jordan-1-low-g-golf-shoes-jChrQ3.png"
+        },
+        {
+            productid: Math.floor(Math.random() * 1000),
+            productname: "Air Jordan 1 Zoom CMFT 2",
+            qty: 1,
+            Brand: "Nike",
+            price: 18000,
+            image: "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/390e7aea-a6e4-45f4-9ce2-ee186c3d236a/air-jordan-1-zoom-cmft-2-mens-shoes-Tw02qw.png"
+        },
+        {
+            productid: Math.floor(Math.random() * 1000),
+            productname: "Air Jordan 1 Element",
+            qty: 1,
+            Brand: "Nike",
+            price: 15500,
+            image: "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/16daa42d-92e3-44d1-a2c4-b175431af49b/air-jordan-1-element-shoes-NFCNts.png"
+        },
+        {
+            productid: Math.floor(Math.random() * 1000),
+            productname: "Nike Dunk Mid",
+            qty: 1,
+            Brand: "Nike",
+            price: 25000,
+            image: "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/0996b427-9756-4ea4-a771-46a811dc2762/dunk-mid-mens-shoes-RHtFM2.png"
+        },
+        {
+            productid: Math.floor(Math.random() * 1000),
+            productname: "Nike Dunk Low",
+            qty: 1,
+            Brand: "Nike",
+            price: 22000,
+            image: "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/062fc556-4491-4cee-bb81-9b570869f8ac/dunk-low-big-kids-shoes-pfrWfJ.png"
+        },
+        {
+            productid: Math.floor(Math.random() * 1000),
+            productname: "Nike Dunk High",
+            qty: 1,
+            Brand: "Nike",
+            price: 23500,
+            image: "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/2615aaab-d1ad-4230-a850-c819cb947e97/dunk-high-big-kids-shoes-s8TQL9.png"
+        },
+        {
+            productid: Math.floor(Math.random() * 1000),
+            productname: "Travis Scott x Fragment",
+            qty: 1,
+            Brand: "Nike",
+            price: 16250,
+            image: "https://static.nike.com/a/images/t_prod_ss/w_640,c_limit,f_auto/15b77901-eb6e-46a8-8c2e-76beb0b5b42a/air-jordan-1-low-travis-scott-x-fragment-release-date.jpg"
+        },
+        {
+            productid: Math.floor(Math.random() * 1000),
+            productname: "Beverly Hills Sneaker",
+            Brand: "L.V",
+            qty: 1,
+            price: 105220,
+            image: "https://eu.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-beverly-hills-sneaker--BPDU1PPC45_PM2_Front%20view.png?wid=456&hei=456"
+        },
+        {
+            productid: Math.floor(Math.random() * 1000),
+            productname: "Louis Vuitton Trainer Monogram Denim Orange",
+            Brand: "L.V",
+            qty: 1,
+            price: 150000,
+            image: "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSB7bYoVvyJyEp7ZObQqdNqfZncPx4VxDTHwtT5W1Ed8sEut9CYx8F5Ecdlprb1p4K_grshqZjdBixPepRoH5kEZ6kSyQYScEh5_f5CO11YOu8tqy6tbulW"
+        },
+        {
+            productid: Math.floor(Math.random() * 1000),
+            productname: "Louis Vuitton LV TRAINER SNEAKER",
+            Brand: "L.V",
+            qty: 1,
+            price: 17550,
+            image: "https://cdn.shopify.com/s/files/1/0360/6491/9692/products/LOUIS_VUITTON_TRAINER_MONOGRAM_DENIM_BLACK_WHITE_1024x.jpg?v=1668850071"
+        },
+        {
+            productid: Math.floor(Math.random() * 1000),
+            productname: "Louis Vuitton LV TRAINER SNEAKER",
+            Brand: "L.V",
+            qty: 1,
+            price: 162587,
+            image: "https://buyma-global-prod-img.s3.amazonaws.com/img/upload/product_image/ced4e50e-9856-4165-b47c-919f21d340ae/d24f056e-b6aa-485e-926b-37257befb9ec.png"
+        },
+    ];
+
+    viewdata = () => {
+        localStorage.setItem('product', JSON.stringify(data));
+        tbl = "";
+        data.map((val) => {
+            tbl +=
+                `
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="${val.image}" width="200" class="card-img-top" alt="">
+                        <div class="card-body">
+                        <h5 class="card-title">${val.productname}</h5>
+                        <p>${val.Brand}</p>
+                        <h5 class="card-title">Price :- ${val.price} Rs</h5>
+                        <button type="button" onclick="order(${val.productid})"  class="btn btn-primary">Order</button>
+                        </div>
+                    </div>
+                </div>
+            `
+        });
+        document.getElementById('record').innerHTML = tbl;
+    }
+    viewdata();
+    Nikedata = () => {
+        let Brand = "Nike";
+        let tbl = "";
+        data.map((val) => {
+            if (val.Brand == Brand) {
+                tbl +=
+                    `
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="${val.image}" width="200" class="card-img-top" alt="">
+                        <div class="card-body">
+                        <h5 class="card-title">${val.productname}</h5>
+                        <p>${val.Brand}</p>
+                        <h5 class="card-title">Price :- ${val.price} Rs</h5>
+                        <button type="button" onclick="order(${val.productid})"  class="btn btn-primary">Order</button>
+                        </div>
+                    </div>
+                </div>
+            `
+            }
+        });
+        document.getElementById('record').innerHTML = tbl;
+    }
+    LVData = () => {
+        let Brand = "L.V";
+        let tbl = "";
+        data.map((val) => {
+            if (val.Brand == Brand) {
+                tbl +=
+                    `
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="${val.image}" width="200" class="card-img-top" alt="">
+                        <div class="card-body">
+                        <h5 class="card-title">${val.productname}</h5>
+                        <p>${val.Brand}</p>
+                        <h5 class="card-title">Price :- ${val.price} Rs</h5>
+                        <button type="button" onclick="order(${val.productid})"  class="btn btn-primary">Order</button>
+                        </div>
+                    </div>
+                </div>
+            `
+            }
+        });
+        document.getElementById('record').innerHTML = tbl;
+    }
+    order = (pid) => {
+        let cart = [];
+        let allproduct = JSON.parse(localStorage.getItem('product'));
+        allproduct.map((val) => {
+            if (val.productid == pid) {
+                let obj = {
+                    productid: val.productid,
+                    productname: val.productname,
+                    qty: val.qty,
+                    Brand: val.Brand,
+                    price: val.price,
+                    image: val.image
+                };
+                if (localStorage.getItem('cart') === null || localStorage.getItem('cart') === undefined) {
+                    cart.push(obj);
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                }
+                else {
+                    let val = JSON.parse(localStorage.getItem('cart'));
+                    val.push(obj);
+                    localStorage.setItem('cart', JSON.stringify(val));
+                }
+            }
+        });
+        alert("Order Is Successfully Done")
+    }
+
+    cart = () => {
+        window.location.href = "cart.html";
+    }
+</script>
